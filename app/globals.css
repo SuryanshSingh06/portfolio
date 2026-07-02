@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+}
+
+.scrolling-collage-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/background-collapse.jpg");
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: 0 0;
+
+  opacity: 0.4;
+
+  animation: scrollBackground 120s linear infinite;
+}
+
+@keyframes scrollBackground {
+  from {
+    background-position-x: 0;
+  }
+
+  to {
+    background-position-x: -3000px;
+  }
+}
