@@ -7,14 +7,11 @@ body {
 .scrolling-collage-bg {
   position: absolute;
   inset: 0;
-
   background-image: url("/background-collapse.jpg");
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: 0 0;
-
-  opacity: 0.4;
-
+  opacity: 0.5;
   animation: scrollBackground 120s linear infinite;
 }
 
@@ -26,18 +23,4 @@ body {
   to {
     background-position-x: -3000px;
   }
-}
-
-@keyframes spinSlow {
-  from {
-    transform: rotate(0deg) scale(1.05);
-  }
-
-  to {
-    transform: rotate(360deg) scale(1.05);
-  }
-}
-
-.group:hover .group-hover\:animate-spin-slow {
-  animation: spinSlow 8s linear infinite;
 }

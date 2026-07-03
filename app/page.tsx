@@ -1,92 +1,227 @@
+import Link from "next/link";
+import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
+
+const projects = [
+  {
+    title: "FPGA SNES Emulator",
+    href: "/projects/snes",
+    image: "/project-demo.jpg",
+    skills: ["SystemVerilog", "FPGA", "RTL", "Computer Architecture"],
+    size: "md:col-span-4 md:row-span-4",
+  },
+  {
+    title: "F1TENTH Autonomy",
+    href: "/projects/f1tenth",
+    image: "/project-demo.jpg",
+    skills: ["ROS", "LiDAR", "Python", "Autonomy"],
+    size: "md:col-span-2 md:row-span-6",
+  },
+  {
+    title: "Pokemon Tracker App",
+    href: "/projects/project-1025",
+    image: "/project-demo.jpg",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind"],
+    size: "md:col-span-2 md:row-span-3",
+  },
+  {
+    title: "Isaac Lab Training Practice",
+    href: "/projects/isaac-lab",
+    image: "/project-demo.jpg",
+    skills: ["Isaac Lab", "RL", "Python"],
+    size: "md:col-span-2 md:row-span-3",
+  },
+  {
+    title: "Finance App",
+    href: "/projects/finance-app",
+    image: "/project-demo.jpg",
+    skills: ["React", "APIs", "TypeScript"],
+    size: "md:col-span-2 md:row-span-4",
+  },
+  {
+    title: "AM Radio Station Receiver",
+    href: "/projects/am-radio-receiver",
+    image: "/project-demo.jpg",
+    skills: ["Circuits", "Signals", "Analog"],
+    size: "md:col-span-2 md:row-span-3",
+  },
+  {
+    title: "Vending Machine Logic Controller",
+    href: "/projects/vending-machine-controller",
+    image: "/project-demo.jpg",
+    skills: ["FSM", "Logic Design", "Digital Systems"],
+    size: "md:col-span-2 md:row-span-3",
+  },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#F4F4F2]">
-      {/* Landing Section */}
-      <section className="relative h-[75vh] overflow-hidden">
+      <section className="relative overflow-hidden">
         <div className="scrolling-collage-bg" />
-        <div className="absolute inset-0 bg-[#F4F4F2]/75" />
+        <div className="absolute inset-0 bg-[#F4F4F2]/55" />
 
-        <div className="relative z-10 flex h-full items-center justify-between px-16">
-          {/* Left Side */}
-          <div className="max-w-3xl">
-            <p className="mb-4 text-lg text-[#42718A]">
+        <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col items-center justify-center gap-10 px-6 py-12 lg:min-h-[65vh] lg:flex-row lg:justify-between lg:px-16">
+          <div className="max-w-3xl text-center lg:text-left">
+            <p className="mb-3 text-base text-[#42718A] sm:text-lg">
               Electrical & Computer Engineering @ UIUC
             </p>
 
-            <h1 className="mb-6 text-6xl font-semibold tracking-tight text-neutral-900">
-              My Project Gallery
+            <h1 className="mb-5 text-5xl font-semibold tracking-tight text-neutral-900 sm:text-6xl lg:text-7xl">
+              Suryansh Singh
             </h1>
 
-            <p className="max-w-2xl text-2xl leading-relaxed text-neutral-700">
-              A collection of engineering projects spanning embedded systems,
-              robotics, autonomy, and software.
+            <p className="mx-auto max-w-2xl text-xl leading-relaxed text-neutral-700 sm:text-2xl lg:mx-0">
+              A museum of my projects.
             </p>
 
-            <div className="mt-10 flex gap-4">
+            <div className="mt-8 flex items-center justify-center gap-5 lg:justify-start">
               <a
-                href="/projects"
-                className="rounded-md bg-[#42718A] px-6 py-3 text-white transition hover:bg-[#365f75]"
+                href="/resume"
+                className="rounded-md bg-[#42718A] px-6 py-3 font-medium text-white transition hover:bg-[#365f75]"
               >
-                View Projects
+                Resume
               </a>
 
               <a
-                href="/resume"
-                className="rounded-md border border-[#42718A] px-6 py-3 text-[#42718A] transition hover:bg-[#42718A] hover:text-white"
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#42718A] transition hover:scale-110 hover:text-[#365f75]"
               >
-                Resume
+                <FaGithub size={30} />
+              </a>
+
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#42718A] transition hover:scale-110 hover:text-[#365f75]"
+              >
+                <FaLinkedin size={30} />
+              </a>
+
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#42718A] transition hover:scale-110 hover:text-[#365f75]"
+              >
+                <FaEnvelope size={30} />
               </a>
             </div>
           </div>
 
-          {/* Right Side */}
-<div className="group relative mr-28 flex h-[34rem] w-[34rem] items-center justify-center">
-  {/* Blue Ring */}
-  <div
-    className="
-      absolute
-      h-[31.5rem]
-      w-[31.5rem]
-      rounded-full
-      border-[10px]
-      border-[#42718A]
-      transition-transform
-      duration-500
-      ease-out
-      group-hover:scale-105
-      group-hover:animate-spin-slow
-    "
-  />
+          <div className="group relative flex h-64 w-64 shrink-0 items-center justify-center sm:h-80 sm:w-80 lg:mr-12 lg:h-[34rem] lg:w-[34rem]">
+            <div className="absolute h-[16.5rem] w-[16.5rem] rounded-full border-[8px] border-[#42718A] transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[20.5rem] sm:w-[20.5rem] lg:h-[31.5rem] lg:w-[31.5rem] lg:border-[10px]" />
 
-  {/* Profile Picture */}
-  <img
-    src="/profile.jpg"
-    alt="Profile"
-    className="
-      relative
-      h-[30rem]
-      w-[30rem]
-      rounded-full
-      object-cover
-      shadow-2xl
-      transition-transform
-      duration-500
-      ease-out
-      group-hover:scale-105
-    "
-  />
-</div>
+            <img
+              src="/profile.jpg"
+              alt="Profile"
+              className="relative h-60 w-60 rounded-full object-cover shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105 sm:h-76 sm:w-76 lg:h-[30rem] lg:w-[30rem]"
+            />
+          </div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="min-h-[40vh] bg-[#F4F4F2] px-16 py-16">
-        <div className="max-w-6xl">
-          <h2 className="text-3xl font-semibold text-neutral-900">
+      <section className="bg-[#F4F4F2] px-6 py-14 lg:px-16">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="mb-8 text-4xl font-semibold text-neutral-900">
             Featured Projects
           </h2>
+
+          <div className="grid auto-rows-[120px] grid-cols-1 gap-6 md:grid-cols-6">
+            {projects.map((project) => (
+              <Link
+                key={project.title}
+                href={project.href}
+                className={`group col-span-1 row-span-4 overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${project.size}`}
+              >
+                <div className="h-[70%] overflow-hidden bg-neutral-200">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} preview`}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+
+                <div className="flex flex-col gap-2 px-5 pt-4 pb-3">
+                  <div className="mb-2 flex items-center justify-between gap-4">
+                    <h3 className="text-xl font-semibold leading-tight text-neutral-900">
+                      {project.title}
+                    </h3>
+
+                    <FaArrowRight className="shrink-0 text-[#42718A] transition group-hover:translate-x-1" />
+                  </div>
+
+                  <div className="mt-1 flex flex-wrap gap-1.5">
+                    {project.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-sm bg-[#42718A] px-2 py-0.5 text-[10px] font-medium uppercase tracking-normal text-white"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-10 flex justify-center">
+            <Link
+              href="/projects"
+              className="group relative inline-block text-2xl font-bold tracking-tight text-black transition-transform duration-300 hover:-translate-y-1"
+            >
+              View All
+              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-black transition-all duration-300 ease-out group-hover:w-full" />
+            </Link>
+          </div>
         </div>
       </section>
+      <footer className="bg-[#42718A] px-6 py-10 text-white lg:px-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="text-2xl font-semibold">Suryansh Singh</h2>
+            <p className="mt-2 text-white/80">Always happy to connect</p>
+          </div>
+
+          <div className="flex items-center gap-5">
+            <a
+              href="/resume"
+              className="rounded-md border border-white px-5 py-2 font-medium text-white transition hover:bg-white hover:text-[#42718A]"
+            >
+              Resume
+            </a>
+
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white transition hover:scale-110 hover:text-white/80"
+            >
+              <FaGithub size={28} />
+            </a>
+
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white transition hover:scale-110 hover:text-white/80"
+            >
+              <FaLinkedin size={28} />
+            </a>
+
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white transition hover:scale-110 hover:text-white/80"
+            >
+              <FaEnvelope size={28} />
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

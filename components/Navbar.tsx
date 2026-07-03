@@ -7,14 +7,12 @@ const inconsolata = Inconsolata({
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-[#42718A] text-white">
+    <nav className="sticky top-0 z-50 w-full bg-[#42718A] text-white">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4">
-        {/* Logo */}
         <a
           href="/"
           className={`group relative flex h-16 w-16 items-center justify-center ${inconsolata.className}`}
         >
-          {/* Drawn Circle */}
           <svg
             className="absolute inset-0 h-full w-full -rotate-90"
             viewBox="0 0 64 64"
@@ -38,11 +36,9 @@ export default function Navbar() {
             />
           </svg>
 
-          {/* Letter */}
           <span className="z-10 text-5xl font-normal leading-none">S</span>
         </a>
 
-        {/* Navigation Links */}
         <div className="flex items-center gap-8 text-lg">
           <a href="/projects" className="transition hover:text-gray-200">
             Projects
