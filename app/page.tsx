@@ -1,3 +1,6 @@
+"use client";
+
+import { useRef } from "react";
 import Link from "next/link";
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
 
@@ -54,9 +57,13 @@ const projects = [
 ];
 
 export default function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const groupRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+
   return (
     <main className="min-h-screen bg-[#F4F4F2]">
-      <section className="relative overflow-hidden">
+      <section ref={heroRef} className="relative overflow-hidden">
         <div className="scrolling-collage-bg" />
         <div className="absolute inset-0 bg-[#F4F4F2]/55" />
 
@@ -111,14 +118,30 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="group relative flex h-64 w-64 shrink-0 items-center justify-center sm:h-80 sm:w-80 lg:mr-12 lg:h-[34rem] lg:w-[34rem]">
-            <div className="absolute h-[16.5rem] w-[16.5rem] rounded-full border-[8px] border-[#42718A] transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[20.5rem] sm:w-[20.5rem] lg:h-[31.5rem] lg:w-[31.5rem] lg:border-[10px]" />
-
-            <img
-              src="/profile.jpg"
-              alt="Profile"
-              className="relative h-60 w-60 rounded-full object-cover shadow-2xl transition-transform duration-500 ease-out group-hover:scale-105 sm:h-76 sm:w-76 lg:h-[30rem] lg:w-[30rem]"
+          <div
+            ref={groupRef}
+            className="group relative flex h-64 w-64 shrink-0 items-center justify-center sm:h-80 sm:w-80 lg:mr-12 lg:h-[34rem] lg:w-[34rem]"
+          >
+            <div
+              ref={ringRef}
+              className="absolute z-10 h-[16.5rem] w-[16.5rem] rounded-full border-[8px] border-[#42718A] transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[20.5rem] sm:w-[20.5rem] lg:h-[31.5rem] lg:w-[31.5rem] lg:border-[10px]"
             />
+
+            <div className="relative z-20 h-60 w-60 sm:h-76 sm:w-76 lg:h-[30rem] lg:w-[30rem] [perspective:1200px]">
+              <div className="relative h-full w-full rounded-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                <img
+                  src="/profile.jpg"
+                  alt="Profile"
+                  className="absolute inset-0 h-full w-full rounded-full object-cover shadow-2xl [backface-visibility:hidden]"
+                />
+                <div className="absolute inset-0 flex h-full w-full rotate-y-180 flex-col items-center justify-center rounded-full bg-[#42718A] p-10 text-center text-white shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                  <h2 className="text-3xl font-semibold">About Me</h2>
+                  <p className="mt-4 text-base leading-7 text-white/90">
+                    I'm passionate about embedded systems, robotics, and autonomy.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -167,6 +190,7 @@ export default function Home() {
               </Link>
             ))}
           </div>
+
           <div className="mt-10 flex justify-center">
             <Link
               href="/projects"
@@ -178,6 +202,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+
       <footer className="bg-[#42718A] px-6 py-10 text-white lg:px-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
