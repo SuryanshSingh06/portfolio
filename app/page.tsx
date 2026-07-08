@@ -69,7 +69,7 @@ export default function Home() {
 
         <div className="relative z-10 mx-auto flex min-h-[calc(100vh-6rem)] max-w-7xl flex-col items-center justify-center gap-10 px-6 py-12 lg:min-h-[65vh] lg:flex-row lg:justify-between lg:px-16">
           <div className="max-w-3xl text-center lg:text-left">
-            <p className="mb-3 text-base text-[#42718A] sm:text-lg">
+            <p className="mb-3 text-base text-[var(--accent)] sm:text-lg">
               Electrical & Computer Engineering @ UIUC
             </p>
 
@@ -84,7 +84,7 @@ export default function Home() {
             <div className="mt-8 flex items-center justify-center gap-5 lg:justify-start">
               <a
                 href="/resume"
-                className="rounded-md bg-[#42718A] px-6 py-3 font-medium text-white transition hover:bg-[#365f75]"
+                className="rounded-md bg-[var(--accent)] px-6 py-3 font-medium text-white transition hover:bg-[var(--accent-hover)]"
               >
                 Resume
               </a>
@@ -93,7 +93,7 @@ export default function Home() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#42718A] transition hover:scale-110 hover:text-[#365f75]"
+                className="text-[var(--accent)] transition hover:scale-110 hover:text-[var(--accent-hover)]"
               >
                 <FaGithub size={30} />
               </a>
@@ -102,7 +102,7 @@ export default function Home() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#42718A] transition hover:scale-110 hover:text-[#365f75]"
+                className="text-[var(--accent)] transition hover:scale-110 hover:text-[var(--accent-hover)]"
               >
                 <FaLinkedin size={30} />
               </a>
@@ -111,7 +111,7 @@ export default function Home() {
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#42718A] transition hover:scale-110 hover:text-[#365f75]"
+                className="text-[var(--accent)] transition hover:scale-110 hover:text-[var(--accent-hover)]"
               >
                 <FaEnvelope size={30} />
               </a>
@@ -124,7 +124,7 @@ export default function Home() {
           >
             <div
               ref={ringRef}
-              className="absolute z-10 h-[16.5rem] w-[16.5rem] rounded-full border-[8px] border-[#42718A] transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[20.5rem] sm:w-[20.5rem] lg:h-[31.5rem] lg:w-[31.5rem] lg:border-[10px]"
+              className="absolute z-10 h-[16.5rem] w-[16.5rem] rounded-full border-[8px] border-[var(--accent)] transition-transform duration-500 ease-out group-hover:scale-105 sm:h-[20.5rem] sm:w-[20.5rem] lg:h-[31.5rem] lg:w-[31.5rem] lg:border-[10px]"
             />
 
             <div className="relative z-20 h-60 w-60 sm:h-76 sm:w-76 lg:h-[30rem] lg:w-[30rem] [perspective:1200px]">
@@ -134,7 +134,7 @@ export default function Home() {
                   alt="Profile"
                   className="absolute inset-0 h-full w-full rounded-full object-cover shadow-2xl [backface-visibility:hidden]"
                 />
-                <div className="absolute inset-0 flex h-full w-full rotate-y-180 flex-col items-center justify-center rounded-full bg-[#42718A] p-10 text-center text-white shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                <div className="absolute inset-0 flex h-full w-full rotate-y-180 flex-col items-center justify-center rounded-full bg-[var(--accent)] p-10 text-center text-white shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <h2 className="text-3xl font-semibold">About Me</h2>
                   <p className="mt-4 text-base leading-7 text-white/90">
                     I'm passionate about embedded systems, robotics, and autonomy.
@@ -173,14 +173,14 @@ export default function Home() {
                       {project.title}
                     </h3>
 
-                    <FaArrowRight className="shrink-0 text-[#42718A] transition group-hover:translate-x-1" />
+                    <FaArrowRight className="shrink-0 text-[var(--accent)] transition group-hover:translate-x-1" />
                   </div>
 
                   <div className="mt-1 flex flex-wrap gap-1.5">
                     {project.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-sm bg-[#42718A] px-2 py-0.5 text-[10px] font-medium uppercase tracking-normal text-white"
+                        className="rounded-sm bg-[var(--accent)] px-2 py-0.5 text-[10px] font-medium uppercase tracking-normal text-white"
                       >
                         {skill}
                       </span>
@@ -203,7 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#42718A] px-6 py-10 text-white lg:px-16">
+      <footer className="bg-[var(--accent)] px-6 py-10 text-white lg:px-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Suryansh Singh</h2>
@@ -213,7 +213,7 @@ export default function Home() {
           <div className="flex items-center gap-5">
             <a
               href="/resume"
-              className="rounded-md border border-white px-5 py-2 font-medium text-white transition hover:bg-white hover:text-[#42718A]"
+              className="rounded-md border border-white px-5 py-2 font-medium text-white transition hover:bg-white hover:text-[var(--accent)]"
             >
               Resume
             </a>

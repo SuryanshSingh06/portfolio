@@ -7,7 +7,7 @@ const inconsolata = Inconsolata({
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 w-full bg-[#42718A] text-white">
+    <nav className="sticky top-0 z-50 w-full bg-[var(--accent)] text-white">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4">
         <a
           href="/"

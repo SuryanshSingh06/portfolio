@@ -1,5 +1,15 @@
 @import "tailwindcss";
 
+:root {
+  --accent: #42718A;
+  --accent-hover: #365f75;
+
+  /* colours: blue: 42718A, Maroon: 550000*/
+
+  --background: #F4F4F2;
+  --text: #18181b;
+}
+
 body {
   margin: 0;
 }
@@ -7,7 +17,7 @@ body {
 .scrolling-collage-bg {
   position: absolute;
   inset: 0;
-  background-image: url("/background-collapse.jpg");
+  background-image: url("/collage.webp");
   background-repeat: repeat-x;
   background-size: auto 100%;
   background-position: 0 0;
