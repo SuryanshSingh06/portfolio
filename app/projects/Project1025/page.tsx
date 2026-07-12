@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaGithub, FaYoutube, FaFilePdf, FaArrowLeft } from "react-icons/fa";
+import { FaGithub, FaYoutube, FaArrowLeft } from "react-icons/fa";
 
 export default function SNESProjectPage() {
   const sections = ["story", "design", "gallery"] as const;
@@ -117,7 +117,7 @@ export default function SNESProjectPage() {
           <h1 className="text-5xl font-bold">Project1025</h1>
 
           <p className="mt-4 max-w-3xl text-xl text-neutral-600">
-            A simple app to track my personal pokemon collection
+            A mobile-first Pokédex tracker for building and managing a complete Pokémon card collection
           </p>
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
@@ -130,8 +130,14 @@ export default function SNESProjectPage() {
 
           <div className="mt-6 flex flex-wrap gap-6 text-lg">
             <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaGithub /> GitHub</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaYoutube /> Video</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaFilePdf /> Report</a>
+            <a
+              href="https://www.youtube.com/watch?v=gv-r3pfVmvI&list=PLwctlkUeYpzV42z5lNWXDKhfRhylWN_C1&index=9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaYoutube /> DPM&apos;s Video
+            </a>
           </div>
 
 
@@ -140,24 +146,27 @@ export default function SNESProjectPage() {
 
             <div className="max-w-4xl space-y-5 text-lg leading-8 text-neutral-700">
               <p>
-                Pokémon has been a part of my life for as long as I can remember. I grew up watching the shows,
-                playing the games, and collecting cards, but over time I drifted away from the hobby. During a trip
-                to Japan I decided I wanted to get back into collecting, but quickly realized that figuring out what
-                to do with the huge number of bulk cards was one of the hardest parts.
+                I grew up watching Pokémon, playing the games, and collecting
+                cards, but gradually drifted away from the hobby. A trip to
+                Japan inspired me to start collecting again and left me looking
+                for a more purposeful way to organize the bulk cards I already
+                owned.
               </p>
 
               <p>
-                Around the same time I came across DeepPocketMonster's Pokédex Challenge, where the goal is to collect
-                one card for every Pokémon. I loved the idea and decided to build my own complete Pokédex collection.
-                I originally tracked everything in a spreadsheet, but it became frustrating to use while walking around
-                card shows or local shops. Updating hundreds of entries manually was slow, and it was difficult to know
-                exactly which Pokémon I still needed.
+                Around the same time, I discovered DeepPocketMonster&apos;s
+                Pokédex Challenge: collect one card for every Pokémon. I began
+                tracking my own collection in a spreadsheet, but the workflow
+                broke down at card shows and local shops. Updating hundreds of
+                rows on a phone was slow, and checking which Pokémon were still
+                missing took too many steps.
               </p>
 
               <p>
-                Project1025 was built to solve that problem. Instead of searching through spreadsheets, I wanted a fast,
-                mobile-friendly app where I could instantly see my progress, search for missing Pokémon, manage a
-                wishlist, and choose the exact card that represents each Pokédex entry.
+                I built Project1025 as a faster, mobile-first alternative. The
+                app lets me check collection progress, find missing Pokémon,
+                maintain a wishlist, and select the specific card used for each
+                Pokédex entry while I am actively browsing cards.
               </p>
             </div>
           </section>
@@ -167,37 +176,66 @@ export default function SNESProjectPage() {
 
             <div className="max-w-4xl space-y-8 text-lg leading-8 text-neutral-700">
               <div>
+                <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
+                  Mobile Collection Workflow
+                </h3>
+
                 <p>
-                  The app is designed around one simple goal: making it as easy as possible to track a full Pokédex
-                  collection. Every Pokémon appears as a card in a regional Pokédex view, with color-coded progress,
-                  quick search, expandable regions, and overall completion statistics so I always know what I'm missing.
+                  The primary use case is checking the collection while walking
+                  through a convention or card shop, so the interface is designed
+                  around short mobile interactions. Pokémon can be browsed by
+                  region or found through a full Pokédex search, while progress
+                  indicators make completed and missing entries easy to identify
+                  at a glance.
                 </p>
               </div>
 
               <div>
                 <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
-                  Core Features
+                  Data and Persistence
                 </h3>
 
                 <p>
-                  Each Pokémon can be marked as collected with a simple checkbox or assigned a specific Pokémon TCG card.
-                  Clicking a completed entry opens a full-size preview of the selected card, while an edit menu makes it
-                  easy to swap cards, remove entries, or update ownership. Card information is cached in Supabase to keep
-                  searches fast and reduce unnecessary API requests.
+                  The application uses <strong>Next.js</strong>, <strong>React</strong>,
+                  and <strong>TypeScript</strong>. <strong>Supabase </strong> provides
+                  the PostgreSQL database used to persist collection entries,
+                  selected cards, and wishlist state. The data model separates a
+                  Pokémon&apos;s Pokédex entry from the specific card assigned to it,
+                  allowing each entry to be updated without changing the overall
+                  collection structure.
                 </p>
               </div>
 
               <div>
                 <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
-                  Scope and Priorities
+                  Card Search and Caching
                 </h3>
 
                 <p>
-                  Beyond the Pokédex, the app also includes a wishlist for cards I'm searching for, progress tracking by
-                  Pokémon region, search tools for quickly finding entries at card shows, and a responsive interface that
-                  is being designed with an eventual Android version in mind.
+                  Card information and artwork are retrieved from the
+                  <strong> Pokémon TCG API</strong>. Frequently requested results
+                  are cached in Supabase so repeated searches do not depend on a
+                  new external API request. This reduces latency on mobile
+                  connections and keeps the browsing experience responsive while
+                  limiting unnecessary API traffic.
                 </p>
               </div>
+
+              <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
+                Technologies
+              </h3>
+
+              <ul className="grid list-disc gap-x-10 gap-y-2 pl-6 sm:grid-cols-2">
+                <li>Next.js & React</li>
+                <li>TypeScript</li>
+                <li>Tailwind CSS</li>
+                <li>Supabase (PostgreSQL Database)</li>
+                <li>Pokémon TCG REST API</li>
+                <li>API Response Caching</li>
+                <li>Responsive Mobile-First UI Design</li>
+                <li>Component-Based Architecture</li>
+                <li>State Management with React Hooks</li>
+              </ul>
             </div>
           </section>
 
