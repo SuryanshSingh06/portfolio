@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaGithub, FaYoutube, FaFilePdf, FaArrowLeft } from "react-icons/fa";
+import { FaYoutube, FaFilePdf, FaGlobe, FaArrowLeft } from "react-icons/fa";
 
-export default function SNESProjectPage() {
-  const sections = ["story", "design", "gallery"] as const;
+export default function MushuProjectPage() {
+  const sections = ["story", "roles","gallery"] as const;
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("story");
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
@@ -114,24 +114,38 @@ export default function SNESProjectPage() {
 
         <div className="flex-1">
 
-          <h1 className="text-5xl font-bold">[Title]</h1>
+          <h1 className="text-5xl font-bold">Mushu</h1>
 
           <p className="mt-4 max-w-3xl text-xl text-neutral-600">
-            [Description]
+            Team 1325&apos;s robot for the 2024 FIRST Robotics Competition season.
           </p>
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
             <img
               src="/project-demo.jpg"
-              alt="SNES Hero"
+              alt="Mushu, Team 3683's 2024 competition robot"
               className="h-full w-full object-cover"
             />
           </div>
 
           <div className="mt-6 flex flex-wrap gap-6 text-lg">
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaGithub /> GitHub</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaYoutube /> Video</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaFilePdf /> Report</a>
+            <a href="#gallery" className="flex items-center gap-2 hover:text-[var(--accent)]">
+              <FaYoutube /> Reveal Video
+            </a>
+            <a href="#gallery" className="flex items-center gap-2 hover:text-[var(--accent)]">
+              <FaYoutube /> Match Highlights
+            </a>
+            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]">
+              <FaFilePdf /> Engineering Notebook
+            </a>
+            <a
+              href="https://www.thebluealliance.com/team/1325/2024"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaGlobe /> The Blue Alliance
+            </a>
           </div>
 
 
@@ -140,53 +154,50 @@ export default function SNESProjectPage() {
 
             <div className="max-w-4xl space-y-5 text-lg leading-8 text-neutral-700">
               <p>
-                [insert here]
+                Mushu was Team 1325&apos;s robot for the 2024 FIRST Robotics
+                Competition season. It used a roller intake, elevator, and
+                flywheel shooter to collect and shoot orange disks. I helped
+                design, build, wire, test, and drive the robot throughout the
+                build season and competition schedule.
               </p>
             </div>
           </section>
 
-          <section id="design" className="mt-16 scroll-mt-28">
-            <h2 className="mb-4 text-3xl font-semibold">Design</h2>
+          <section id="roles" className="mt-16 scroll-mt-28">
+            <h2 className="mb-4 text-3xl font-semibold">My Roles</h2>
 
-            <div className="max-w-4xl space-y-8 text-lg leading-8 text-neutral-700">
-              <div>
-                <p>
-                  [insert here]
-                </p>
-              </div>
-
-              <div>
-                <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
-                  Rendering Pipeline
-                </h3>
-
-                <p>
-                  [insert here]
-                </p>
-              </div>
-
-              <div>
-                <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
-                  Scope and Priorities
-                </h3>
-
-                <p>
-                  [insert here]
-                </p>
-              </div>
+            <div className="max-w-4xl text-lg leading-8 text-neutral-700">
+              <ul className="grid list-disc gap-x-10 gap-y-2 pl-6 sm:grid-cols-2">
+                <li>Mechanical design</li>
+                <li>Mechanical assembly</li>
+                <li>Electrical wiring</li>
+                <li>Robot integration and testing</li>
+              </ul>
             </div>
           </section>
+
 
           <section id="gallery" className="mt-16 scroll-mt-28 pb-20">
             <h2 className="mb-6 text-3xl font-semibold">Project Gallery</h2>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
+              {[
+                "Finished robot",
+                "CAD render",
+                "Build season",
+                "Wiring",
+                "Practice field",
+                "Competition action shot",
+                "Driver station",
+                "Team photo",
+              ].map((caption) => (
+                <figure key={caption}>
+                  <div className="aspect-video rounded-lg bg-neutral-300" />
+                  <figcaption className="mt-2 text-sm text-neutral-600">
+                    {caption}
+                  </figcaption>
+                </figure>
+              ))}
             </div>
           </section>
 
