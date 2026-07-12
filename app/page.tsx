@@ -7,53 +7,54 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from "react-icons/fa";
 const projects = [
   {
     title: "FPGA SNES Emulator",
-    href: "/projects/snes",
+    href: "projects/SNES",
     image: "/project-demo.jpg",
     skills: ["SystemVerilog", "FPGA", "RTL", "Computer Architecture"],
     size: "md:col-span-4 md:row-span-4",
   },
   {
     title: "F1TENTH Autonomy",
-    href: "/projects/f1tenth",
+    href: "projects/F1Tenth",
     image: "/project-demo.jpg",
     skills: ["ROS", "LiDAR", "Python", "Autonomy"],
     size: "md:col-span-2 md:row-span-6",
   },
   {
+    title: "Isaac Lab Training Practice",
+    href: "projects/IsaacLab",
+    image: "/project-demo.jpg",
+    skills: ["Isaac Lab", "RL", "Python"],
+    size: "md:col-span-2 md:row-span-2",
+  },
+  {
     title: "Pokemon Tracker App",
-    href: "/projects/project-1025",
+    href: "projects/Project1025",
     image: "/project-demo.jpg",
     skills: ["React", "Next.js", "TypeScript", "Tailwind"],
     size: "md:col-span-2 md:row-span-3",
   },
   {
-    title: "Isaac Lab Training Practice",
-    href: "/projects/isaac-lab",
+    title: "2024 FRC Robot Mushu",
+    href: "projects/Mushu",
     image: "/project-demo.jpg",
-    skills: ["Isaac Lab", "RL", "Python"],
-    size: "md:col-span-2 md:row-span-3",
+    skills: ["FRC", "Robotics", "CAD", "Control Systems", "C++"],
+    size: "md:col-span-2 md:row-span-4",
   },
   {
-    title: "Finance App",
-    href: "/projects/finance-app",
+    title: "AstroLynx: Wearable Device for Space",
+    href: "projects/AstroLynx",
     image: "/project-demo.jpg",
-    skills: ["React", "APIs", "TypeScript"],
+    skills: ["Embedded Systems", "IoT", "PCB Design", "Sensors", "C++"],
     size: "md:col-span-2 md:row-span-4",
   },
   {
     title: "AM Radio Station Receiver",
-    href: "/projects/am-radio-receiver",
+    href: "projects/AMRadio",
     image: "/project-demo.jpg",
     skills: ["Circuits", "Signals", "Analog"],
     size: "md:col-span-2 md:row-span-3",
   },
-  {
-    title: "Vending Machine Logic Controller",
-    href: "/projects/vending-machine-controller",
-    image: "/project-demo.jpg",
-    skills: ["FSM", "Logic Design", "Digital Systems"],
-    size: "md:col-span-2 md:row-span-3",
-  },
+  
 ];
 
 export default function Home() {
@@ -157,9 +158,9 @@ export default function Home() {
               <Link
                 key={project.title}
                 href={project.href}
-                className={`group col-span-1 row-span-4 overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${project.size}`}
+                className={`group col-span-1 row-span-4 flex flex-col overflow-hidden rounded-md border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl ${project.size}`}
               >
-                <div className="h-[70%] overflow-hidden bg-neutral-200">
+                <div className="min-h-0 flex-1 overflow-hidden bg-neutral-200">
                   <img
                     src={project.image}
                     alt={`${project.title} preview`}
@@ -167,7 +168,7 @@ export default function Home() {
                   />
                 </div>
 
-                <div className="flex flex-col gap-2 px-5 pt-4 pb-3">
+                <div className="flex shrink-0 flex-col gap-2 px-5 pt-4 pb-3">
                   <div className="mb-2 flex items-center justify-between gap-4">
                     <h3 className="text-xl font-semibold leading-tight text-neutral-900">
                       {project.title}
