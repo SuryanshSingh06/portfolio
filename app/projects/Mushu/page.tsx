@@ -122,7 +122,7 @@ export default function MushuProjectPage() {
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
             <img
-              src="/project-demo.jpg"
+              src="/mushu.gif"
               alt="Mushu, Team 3683's 2024 competition robot"
               className="h-full w-full object-cover"
             />

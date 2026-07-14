@@ -122,7 +122,7 @@ export default function AstroLynxProjectPage() {
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
             <img
-              src="/project-demo.jpg"
+              src="/AstroLynx.png"
               alt="AstroLynx wearable safety system"
               className="h-full w-full object-cover"
             />

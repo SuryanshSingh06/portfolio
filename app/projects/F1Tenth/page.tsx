@@ -120,11 +120,11 @@ export default function F1TenthProjectPage() {
             A LiDAR-based autonomy stack combining an always-on wall-balance PID controller with health-gated quadratic wall fitting for safer and faster autonomous racing.
           </p>
 
-          <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
+          <div className="mt-8 flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-xl bg-neutral-300">
             <img
-              src="/project-demo.jpg"
+              src="/f1.gif"
               alt="F1TENTH autonomous vehicle"
-              className="h-full w-full object-cover"
+              className="h-[177.78%] w-[56.25%] rotate-90 object-cover"
             />
           </div>
 

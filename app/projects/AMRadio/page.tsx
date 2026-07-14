@@ -122,7 +122,7 @@ export default function AMRadioProjectPage() {
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
             <img
-              src="/project-demo.jpg"
+              src="/Radio.png"
               alt="AM superheterodyne radio receiver"
               className="h-full w-full object-cover"
             />
@@ -248,7 +248,7 @@ export default function AMRadioProjectPage() {
             <div className="max-w-4xl text-lg leading-8 text-neutral-700">
               <ul className="grid list-disc gap-x-10 gap-y-2 pl-6 sm:grid-cols-2">
                 <li>Analog Circuit Design</li>
-                <li>Operational Amplifiers</li>
+                <li>OP Amps</li>
                 <li>RC Networks</li>
                 <li>Envelope Detection</li>
                 <li>Band-Pass Filters</li>
@@ -260,7 +260,6 @@ export default function AMRadioProjectPage() {
                 <li>Amplitude Modulation</li>
                 <li>Superheterodyne Receivers</li>
                 <li>Communication Systems</li>
-                <li>MATLAB</li>
                 <li>Hardware Debugging</li>
                 <li>Electronic Prototyping</li>
               </ul>

@@ -122,7 +122,7 @@ export default function IsaacLabProjectPage() {
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
             <img
-              src="/project-demo.jpg"
+              src="/Isaac.png"
               alt="Legged robot locomotion training in Isaac Lab"
               className="h-full w-full object-cover"
             />

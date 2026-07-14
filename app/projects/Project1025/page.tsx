@@ -122,7 +122,7 @@ export default function SNESProjectPage() {
 
           <div className="mt-8 aspect-[16/9] w-full overflow-hidden rounded-xl bg-neutral-300">
             <img
-              src="/project-demo.jpg"
+              src="/project1025.png"
               alt="SNES Hero"
               className="h-full w-full object-cover"
             />
