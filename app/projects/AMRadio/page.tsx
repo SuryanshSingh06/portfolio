@@ -1,13 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { FaYoutube, FaFilePdf, FaBook, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const galleryItems = [
+  {
+    src: "/AM_gallery/PXL_20251117_224800404.mp4",
+    caption: "Finished demo",
+    type: "video",
+    orientation: "portrait",
+  },
+] as const;
 
 export default function AMRadioProjectPage() {
   const sections = ["story", "design", "results", "gallery"] as const;
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("story");
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,6 +75,18 @@ export default function AMRadioProjectPage() {
     requestAnimationFrame(animateScroll);
   };
 
+  const scrollGallery = (direction: -1 | 1) => {
+    const gallery = galleryRef.current;
+    const item = gallery?.querySelector<HTMLElement>("figure");
+    if (!gallery || !item) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(gallery).columnGap) || 0;
+    gallery.scrollBy({
+      left: direction * (item.offsetWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <main className="min-h-screen scroll-smooth bg-[#F4F4F2] text-neutral-900">
       <div className="mx-auto flex max-w-7xl gap-12 px-6 py-12 lg:px-16">
@@ -112,7 +134,7 @@ export default function AMRadioProjectPage() {
           </nav>
         </aside>
 
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
 
           <h1 className="text-5xl font-bold">AM Superheterodyne Radio Receiver</h1>
 
@@ -127,13 +149,6 @@ export default function AMRadioProjectPage() {
               className="h-full w-full object-cover"
             />
           </div>
-
-          <div className="mt-6 flex flex-wrap gap-6 text-lg">
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaFilePdf /> Report</a>
-            <a href="#gallery" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaYoutube /> Demo Video</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaBook /> Course Resources</a>
-          </div>
-
 
           <section id="story" className="mt-16 scroll-mt-28">
             <h2 className="mb-4 text-3xl font-semibold">Story</h2>
@@ -269,24 +284,58 @@ export default function AMRadioProjectPage() {
           <section id="gallery" className="mt-16 scroll-mt-28 pb-20">
             <h2 className="mb-6 text-3xl font-semibold">Project Gallery</h2>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                "Completed radio receiver",
-                "Envelope detector circuit",
-                "Audio amplifier",
-                "Active band-pass filter",
-                "Frequency response plot",
-                "Oscilloscope FFT",
-                "Receiver block diagram",
-                "MATLAB software receiver",
-              ].map((caption) => (
-                <figure key={caption}>
-                  <div className="aspect-video rounded-lg bg-neutral-300" />
+            <div className="relative overflow-hidden">
+              <div
+                ref={galleryRef}
+                className="gallery-carousel flex w-full max-w-full snap-x snap-mandatory items-center gap-6 overflow-x-auto px-4 pb-4 pt-4"
+              >
+                {galleryItems.map((item) => (
+                  <figure
+                    key={item.caption}
+                    className="group relative w-[82%] shrink-0 snap-start transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.04] sm:w-[calc((100%_-_1.5rem)/2)] lg:w-[calc((100%_-_3rem)/3)] motion-reduce:transform-none motion-reduce:transition-none"
+                  >
+                    <div className="aspect-[9/16] overflow-hidden rounded-lg bg-neutral-300 transition-shadow duration-300 group-hover:shadow-xl motion-reduce:transition-none">
+                      <video
+                        src={item.src}
+                        controls
+                        loop
+                        playsInline
+                        preload="metadata"
+                        onMouseEnter={(event) => {
+                          void event.currentTarget.play();
+                        }}
+                        onMouseLeave={(event) => {
+                          event.currentTarget.pause();
+                        }}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                    </div>
                   <figcaption className="mt-2 text-sm text-neutral-600">
-                    {caption}
+                      {item.caption}
                   </figcaption>
                 </figure>
               ))}
+              </div>
+
+              <div className="pointer-events-none absolute bottom-4 left-0 top-4 w-3 bg-gradient-to-r from-[#F4F4F2]/70 to-transparent" />
+              <div className="pointer-events-none absolute bottom-4 right-0 top-4 w-3 bg-gradient-to-l from-[#F4F4F2]/70 to-transparent" />
+
+              <button
+                type="button"
+                onClick={() => scrollGallery(-1)}
+                aria-label="Previous gallery item"
+                className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-300 bg-[#F4F4F2]/90 text-neutral-700 shadow-sm backdrop-blur-sm transition-colors hover:border-neutral-500 hover:bg-white"
+              >
+                <FaChevronLeft />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollGallery(1)}
+                aria-label="Next gallery item"
+                className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-300 bg-[#F4F4F2]/90 text-neutral-700 shadow-sm backdrop-blur-sm transition-colors hover:border-neutral-500 hover:bg-white"
+              >
+                <FaChevronRight />
+              </button>
             </div>
           </section>
 

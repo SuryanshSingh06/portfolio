@@ -1,4 +1,5 @@
 import { Inconsolata } from "next/font/google";
+import Link from "next/link";
 
 const inconsolata = Inconsolata({
   subsets: ["latin"],
@@ -9,7 +10,7 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full bg-[var(--accent)] text-white">
       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4">
-        <a
+        <Link
           href="/"
           className={`group relative flex h-16 w-16 items-center justify-center ${inconsolata.className}`}
         >
@@ -37,20 +38,23 @@ export default function Navbar() {
           </svg>
 
           <span className="z-10 text-5xl font-normal leading-none">S</span>
-        </a>
+        </Link>
 
         <div className="flex items-center gap-8 text-lg">
-          <a href="/projects" className="transition hover:text-gray-200">
-            Projects
-          </a>
-
-          <a href="/resume" className="transition hover:text-gray-200">
-            Resume
-          </a>
-
-          <a href="/contact" className="transition hover:text-gray-200">
-            Contact
-          </a>
+          {[
+            { label: "Projects", href: "/projects" },
+            { label: "Resume", href: "/resume" },
+            { label: "Contact", href: "/contact" },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group relative py-2 transition duration-300 hover:-translate-y-0.5 hover:text-gray-200 motion-reduce:transform-none motion-reduce:transition-none"
+            >
+              {item.label}
+              <span className="absolute bottom-1 left-0 h-px w-0 bg-white transition-all duration-300 group-hover:w-full group-focus-visible:w-full motion-reduce:transition-none" />
+            </Link>
+          ))}
         </div>
       </div>
     </nav>

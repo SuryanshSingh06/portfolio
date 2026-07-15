@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaGithub, FaYoutube, FaGlobe, FaArrowLeft } from "react-icons/fa";
+import { FaGithub, FaGlobe, FaArrowLeft } from "react-icons/fa";
 
 export default function F1TenthProjectPage() {
-  const sections = ["story", "design", "results", "gallery"] as const;
+  const sections = ["story", "design", "results"] as const;
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("story");
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
@@ -139,14 +139,7 @@ export default function F1TenthProjectPage() {
             </a>
 
             <a
-              href="#gallery"
-              className="flex items-center gap-2 hover:text-[var(--accent)]"
-            >
-              <FaYoutube /> Videos
-            </a>
-
-            <a
-              href="#"
+              href="https://safeautonomy-illinois-students.github.io/project-site-ten-tenths/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-[var(--accent)]"
@@ -188,6 +181,19 @@ export default function F1TenthProjectPage() {
             <h2 className="mb-4 text-3xl font-semibold">Design</h2>
 
             <div className="max-w-4xl space-y-8 text-lg leading-8 text-neutral-700">
+              <figure className="overflow-hidden rounded-xl border border-neutral-200 bg-[#111827]">
+                <img
+                  src="/F1_gallery/ProjectArch.png"
+                  alt="Architecture of the F1TENTH autonomy controller"
+                  loading="lazy"
+                  className="w-full object-contain"
+                />
+                <figcaption className="border-t border-neutral-700 px-4 py-3 text-sm leading-6 text-neutral-300">
+                  Controller architecture from LiDAR sensing through the baseline
+                  PID, bounded augmentation, and final actuation commands.
+                </figcaption>
+              </figure>
+
               <div>
                 <h3 className="mb-3 text-2xl font-semibold text-neutral-900">
                   Wall-Balance PID
@@ -263,7 +269,7 @@ export default function F1TenthProjectPage() {
             </div>
           </section>
 
-          <section id="results" className="mt-16 scroll-mt-28">
+          <section id="results" className="mt-16 scroll-mt-28 pb-20">
             <h2 className="mb-4 text-3xl font-semibold">Results</h2>
 
             <div className="max-w-4xl space-y-5 text-lg leading-8 text-neutral-700">
@@ -283,19 +289,6 @@ export default function F1TenthProjectPage() {
             </div>
           </section>
 
-
-          <section id="gallery" className="mt-16 scroll-mt-28 pb-20">
-            <h2 className="mb-6 text-3xl font-semibold">Project Gallery</h2>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-            </div>
-          </section>
 
         </div>
       </div>

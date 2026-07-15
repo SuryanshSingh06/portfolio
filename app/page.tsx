@@ -83,39 +83,40 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex items-center justify-center gap-5 lg:justify-start">
-              <a
+              <Link
                 href="/resume"
                 className="rounded-md bg-[var(--accent)] px-6 py-3 font-medium text-white transition hover:bg-[var(--accent-hover)]"
               >
                 Resume
-              </a>
+              </Link>
 
               <a
-                href="https://youtube.com"
+                href="https://github.com/SuryanshSingh06"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub profile"
                 className="text-[var(--accent)] transition hover:scale-110 hover:text-[var(--accent-hover)]"
               >
                 <FaGithub size={30} />
               </a>
 
               <a
-                href="https://youtube.com"
+                href="https://www.linkedin.com/in/suryansh-singh-3b4b9927b/"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn profile"
                 className="text-[var(--accent)] transition hover:scale-110 hover:text-[var(--accent-hover)]"
               >
                 <FaLinkedin size={30} />
               </a>
 
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
+                aria-label="Contact"
                 className="text-[var(--accent)] transition hover:scale-110 hover:text-[var(--accent-hover)]"
               >
                 <FaEnvelope size={30} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -138,7 +139,7 @@ export default function Home() {
                 <div className="absolute inset-0 flex h-full w-full rotate-y-180 flex-col items-center justify-center rounded-full bg-[var(--accent)] p-10 text-center text-white shadow-2xl [transform:rotateY(180deg)] [backface-visibility:hidden]">
                   <h2 className="text-3xl font-semibold">About Me</h2>
                   <p className="mt-4 text-base leading-7 text-white/90">
-                    I'm passionate about embedded systems, robotics, and autonomy.
+                    Hey there! I'm a Comp E at UIUC passionate about all robotics, autonomy, and embedded systems, and am always eager to learn! 
                   </p>
                 </div>
               </div>
@@ -212,39 +213,40 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-5">
-            <a
+            <Link
               href="/resume"
               className="rounded-md border border-white px-5 py-2 font-medium text-white transition hover:bg-white hover:text-[var(--accent)]"
             >
               Resume
-            </a>
+            </Link>
 
             <a
-              href="https://youtube.com"
+              href="https://github.com/SuryanshSingh06"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub profile"
               className="text-white transition hover:scale-110 hover:text-white/80"
             >
               <FaGithub size={28} />
             </a>
 
             <a
-              href="https://youtube.com"
+              href="https://www.linkedin.com/in/suryansh-singh-3b4b9927b/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn profile"
               className="text-white transition hover:scale-110 hover:text-white/80"
             >
               <FaLinkedin size={28} />
             </a>
 
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
+              aria-label="Contact"
               className="text-white transition hover:scale-110 hover:text-white/80"
             >
               <FaEnvelope size={28} />
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

@@ -2,9 +2,9 @@
 
 :root {
   --accent: #550000;
-  --accent-hover: #365f75;
+  --accent-hover: #3b0000;
 
-  /* colours: blue: 42718A, Maroon: 550000*/
+  /* Accent palette: maroon */
 
   --background: #F4F4F2;
   --text: #18181b;
@@ -12,6 +12,29 @@
 
 body {
   margin: 0;
+}
+
+.gallery-carousel {
+  scrollbar-color: #a3a3a3 transparent;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
+.gallery-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.gallery-carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery-carousel::-webkit-scrollbar-thumb {
+  background: #a3a3a3;
+  border-radius: 999px;
+}
+
+.gallery-carousel::-webkit-scrollbar-thumb:hover {
+  background: #737373;
 }
 
 .scrolling-collage-bg {

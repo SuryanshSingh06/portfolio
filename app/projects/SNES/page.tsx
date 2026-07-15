@@ -1,13 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { FaGithub, FaYoutube, FaFilePdf, FaArrowLeft } from "react-icons/fa";
+import { FaGithub, FaYoutube, FaFilePdf, FaArrowLeft, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+const galleryItems = [
+  { src: "/SNES_gallery/SNES_CPU_Test_1.mp4", caption: "First SNES CPU test", type: "video", orientation: "portrait" },
+  { src: "/SNES_gallery/SNES_First_Visible_Sign_on_display.jpg", caption: "First visible output on the display", type: "image", orientation: "portrait" },
+  { src: "/SNES_gallery/Golden_CPU_test_passed.mp4", caption: "Golden CPU test passed", type: "video", orientation: "portrait" },
+  { src: "/SNES_gallery/SMW_Loaded_for_first_time_background_only.mp4", caption: "Super Mario World loaded for the first time, background only", type: "video", orientation: "portrait" },
+  { src: "/SNES_gallery/First_iteration_of_objects.mp4", caption: "First iteration of object rendering", type: "video" },
+  {
+    sources: [
+      "/SNES_gallery/rendering_pipelining_struggles1.jpg",
+      "/SNES_gallery/rendering_pipelining_struggles2.jpg",
+    ],
+    caption: "Rendering pipeline debugging",
+    type: "collage",
+  },
+  { src: "/SNES_gallery/mario_is_somewhat_legible.jpg", caption: "Mario becomes partially legible", type: "image", orientation: "portrait" },
+  { src: "/SNES_gallery/first_proper_gameloading_with_slight_rendering_issues.mp4", caption: "First complete game load with minor rendering issues", type: "video", orientation: "portrait" },
+  { src: "/SNES_gallery/first_proper_gameplay_with_rendering_issuesmp4.mp4", caption: "First gameplay with rendering issues", type: "video", orientation: "portrait" },
+  { src: "/SNES_gallery/HORIZONATL_LINES_GONE.mp4", caption: "Horizontal line artifacts resolved", type: "video", orientation: "portrait" },
+  {
+    sources: [
+      "/SNES_gallery/more_rendering_bugs1.jpg",
+      "/SNES_gallery/more_rendering_bugs2.jpg",
+    ],
+    caption: "More rendering bugs",
+    type: "collage",
+  },
+  { src: "/SNES_gallery/subscreen_works.jpg", caption: "Subscreen rendering working", type: "image" },
+  { src: "/SNES_gallery/kinda_metroid.mp4", caption: "Early Super Metroid rendering", type: "video", orientation: "portrait" },
+  { src: "/SNES_gallery/earthbound_works.mp4", caption: "EarthBound running successfully", type: "video" },
+] as const;
 
 export default function SNESProjectPage() {
   const sections = ["story", "design", "gallery"] as const;
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("story");
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,6 +97,18 @@ export default function SNESProjectPage() {
     requestAnimationFrame(animateScroll);
   };
 
+  const scrollGallery = (direction: -1 | 1) => {
+    const gallery = galleryRef.current;
+    const item = gallery?.querySelector<HTMLElement>("figure");
+    if (!gallery || !item) return;
+
+    const gap = Number.parseFloat(window.getComputedStyle(gallery).columnGap) || 0;
+    gallery.scrollBy({
+      left: direction * (item.offsetWidth + gap),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <main className="min-h-screen scroll-smooth bg-[#F4F4F2] text-neutral-900">
       <div className="mx-auto flex max-w-7xl gap-12 px-6 py-12 lg:px-16">
@@ -112,7 +156,7 @@ export default function SNESProjectPage() {
           </nav>
         </aside>
 
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
 
           <h1 className="text-5xl font-bold">FPGA SNES Emulator</h1>
 
@@ -129,9 +173,29 @@ export default function SNESProjectPage() {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-6 text-lg">
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaGithub /> GitHub</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaYoutube /> Video</a>
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaFilePdf /> Report</a>
+            <a
+              href="https://github.com/safan41/snes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaGithub /> GitHub
+            </a>
+            <a
+              href="https://youtu.be/iHTvJDg6JQU?t=657"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaYoutube /> Demo
+            </a>
+            <a
+              href="/SNES_gallery/SNES_Report.pdf"
+              download="SNES_Report.pdf"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaFilePdf /> Report
+            </a>
           </div>
 
 
@@ -189,6 +253,19 @@ export default function SNESProjectPage() {
                   <li>USB Controller Support</li>
                   <li>DDR3 Support for ROMs</li>
                 </ul>
+
+                <figure className="mt-6 overflow-hidden rounded-xl border border-neutral-200 bg-white">
+                  <img
+                    src="/SNES_gallery/ProjectArch.png"
+                    alt="Block diagram of the FPGA SNES emulator architecture"
+                    loading="lazy"
+                    className="w-full object-contain"
+                  />
+                  <figcaption className="border-t border-neutral-200 px-4 py-3 text-sm leading-6 text-neutral-600">
+                    System architecture showing the CPU, PPU, memory, controller,
+                    and display interfaces.
+                  </figcaption>
+                </figure>
               </div>
 
               <div>
@@ -209,6 +286,19 @@ export default function SNESProjectPage() {
                   Raspberry Pi 4, which communicates with the FPGA through GPIO
                   and jumper wires.
                 </p>
+
+                <figure className="mt-6 overflow-hidden rounded-xl border border-neutral-200 bg-white">
+                  <img
+                    src="/SNES_gallery/ProjectUsage.png"
+                    alt="FPGA resource utilization for the SNES emulator"
+                    loading="lazy"
+                    className="w-full object-contain"
+                  />
+                  <figcaption className="border-t border-neutral-200 px-4 py-3 text-sm leading-6 text-neutral-600">
+                    Final FPGA resource utilization, including 97% of available
+                    BRAM and 73% of lookup tables.
+                  </figcaption>
+                </figure>
               </div>
 
               <div>
@@ -264,15 +354,101 @@ export default function SNESProjectPage() {
           </section>
 
           <section id="gallery" className="mt-16 scroll-mt-28 pb-20">
-            <h2 className="mb-6 text-3xl font-semibold">Project Gallery</h2>
+            <h2 className="mb-3 text-3xl font-semibold">Project Gallery</h2>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
+            <p className="mb-6 text-lg text-neutral-700">
+              <a
+                href="https://youtu.be/iHTvJDg6JQU?t=657"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--accent)] hover:underline"
+              >
+                View the video linked here
+              </a>{" "}
+              for the full gameplay and demo!
+            </p>
+
+            <div className="relative overflow-hidden">
+              <div
+                ref={galleryRef}
+                className="gallery-carousel flex w-full max-w-full snap-x snap-mandatory items-center gap-6 overflow-x-auto px-4 pb-4 pt-4"
+              >
+                {galleryItems.map((item) => (
+                <figure
+                  key={item.caption}
+                  className="group relative w-[82%] shrink-0 snap-start transition-transform duration-300 ease-out hover:z-10 hover:scale-[1.04] sm:w-[calc((100%_-_1.5rem)/2)] lg:w-[calc((100%_-_3rem)/3)] motion-reduce:transform-none motion-reduce:transition-none"
+                >
+                  <div
+                    className={`overflow-hidden rounded-lg bg-neutral-300 transition-shadow duration-300 group-hover:shadow-xl motion-reduce:transition-none ${
+                      "orientation" in item && item.orientation === "portrait"
+                        ? item.type === "video"
+                          ? "aspect-[9/16]"
+                          : "aspect-[3/4]"
+                        : "aspect-video"
+                    }`}
+                  >
+                    {item.type === "video" ? (
+                      <video
+                        src={item.src}
+                        controls
+                        loop
+                        playsInline
+                        preload="metadata"
+                        onMouseEnter={(event) => {
+                          void event.currentTarget.play();
+                        }}
+                        onMouseLeave={(event) => {
+                          event.currentTarget.pause();
+                        }}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                    ) : item.type === "image" ? (
+                      <img
+                        src={item.src}
+                        alt={item.caption}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                      />
+                    ) : (
+                      <div className="grid h-full grid-cols-2 gap-px bg-neutral-200">
+                        {item.sources.map((src, index) => (
+                          <img
+                            key={src}
+                            src={src}
+                            alt={`${item.caption}, image ${index + 1}`}
+                            loading="lazy"
+                            className="h-full min-w-0 object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transform-none motion-reduce:transition-none"
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <figcaption className="mt-2 text-sm text-neutral-600">
+                    {item.caption}
+                  </figcaption>
+                  </figure>
+                ))}
+              </div>
+
+              <div className="pointer-events-none absolute bottom-4 left-0 top-4 w-3 bg-gradient-to-r from-[#F4F4F2]/70 to-transparent" />
+              <div className="pointer-events-none absolute bottom-4 right-0 top-4 w-3 bg-gradient-to-l from-[#F4F4F2]/70 to-transparent" />
+
+              <button
+                type="button"
+                onClick={() => scrollGallery(-1)}
+                aria-label="Previous gallery item"
+                className="absolute left-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-300 bg-[#F4F4F2]/90 text-neutral-700 shadow-sm backdrop-blur-sm transition-colors hover:border-neutral-500 hover:bg-white"
+              >
+                <FaChevronLeft />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollGallery(1)}
+                aria-label="Next gallery item"
+                className="absolute right-2 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-neutral-300 bg-[#F4F4F2]/90 text-neutral-700 shadow-sm backdrop-blur-sm transition-colors hover:border-neutral-500 hover:bg-white"
+              >
+                <FaChevronRight />
+              </button>
             </div>
           </section>
 

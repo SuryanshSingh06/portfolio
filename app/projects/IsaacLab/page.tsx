@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { FaGithub, FaYoutube, FaBook, FaArrowLeft } from "react-icons/fa";
+import { FaGoogleDrive, FaBook, FaArrowLeft } from "react-icons/fa";
 
 export default function IsaacLabProjectPage() {
-  const sections = ["story", "design", "results", "technologies", "gallery"] as const;
+  const sections = ["story", "design", "results", "technologies"] as const;
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("story");
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
@@ -129,8 +129,14 @@ export default function IsaacLabProjectPage() {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-6 text-lg">
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaGithub /> GitHub</a>
-            <a href="#gallery" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaYoutube /> Videos</a>
+            <a
+              href="https://drive.google.com/drive/folders/1KJ9okm-ugQWo9kd3EHmzFZomUljusCpE?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaGoogleDrive /> Google Drive
+            </a>
             <a
               href="https://isaac-sim.github.io/IsaacLab/main/index.html"
               target="_blank"
@@ -250,7 +256,7 @@ export default function IsaacLabProjectPage() {
             </div>
           </section>
 
-          <section id="technologies" className="mt-16 scroll-mt-28">
+          <section id="technologies" className="mt-16 scroll-mt-28 pb-20">
             <h2 className="mb-4 text-3xl font-semibold">Technologies</h2>
 
             <div className="max-w-4xl text-lg leading-8 text-neutral-700">
@@ -267,29 +273,6 @@ export default function IsaacLabProjectPage() {
                 <li>Python</li>
                 <li>tmux</li>
               </ul>
-            </div>
-          </section>
-
-          <section id="gallery" className="mt-16 scroll-mt-28 pb-20">
-            <h2 className="mb-6 text-3xl font-semibold">Project Gallery</h2>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                "Anymal-C rough terrain",
-                "Ant locomotion",
-                "Reward curve",
-                "Episode length curve",
-                "H1 humanoid",
-                "Isaac Sim WebRTC",
-                "Training terminal",
-              ].map((caption) => (
-                <figure key={caption}>
-                  <div className="aspect-video rounded-lg bg-neutral-300" />
-                  <figcaption className="mt-2 text-sm text-neutral-600">
-                    {caption}
-                  </figcaption>
-                </figure>
-              ))}
             </div>
           </section>
 

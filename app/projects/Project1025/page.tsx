@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaGithub, FaYoutube, FaArrowLeft } from "react-icons/fa";
 
 export default function SNESProjectPage() {
-  const sections = ["story", "design", "gallery"] as const;
+  const sections = ["story", "design"] as const;
   const [activeSection, setActiveSection] = useState<(typeof sections)[number]>("story");
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
 
@@ -129,7 +129,14 @@ export default function SNESProjectPage() {
           </div>
 
           <div className="mt-6 flex flex-wrap gap-6 text-lg">
-            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]"><FaGithub /> GitHub</a>
+            <a
+              href="https://github.com/SuryanshSingh06/Project1025"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-[var(--accent)]"
+            >
+              <FaGithub /> GitHub
+            </a>
             <a
               href="https://www.youtube.com/watch?v=gv-r3pfVmvI&list=PLwctlkUeYpzV42z5lNWXDKhfRhylWN_C1&index=9"
               target="_blank"
@@ -137,6 +144,9 @@ export default function SNESProjectPage() {
               className="flex items-center gap-2 hover:text-[var(--accent)]"
             >
               <FaYoutube /> DPM&apos;s Video
+            </a>
+            <a href="#" className="flex items-center gap-2 hover:text-[var(--accent)]">
+              <FaYoutube /> Coming Soon!
             </a>
           </div>
 
@@ -171,7 +181,7 @@ export default function SNESProjectPage() {
             </div>
           </section>
 
-          <section id="design" className="mt-16 scroll-mt-28">
+          <section id="design" className="mt-16 scroll-mt-28 pb-20">
             <h2 className="mb-4 text-3xl font-semibold">Design</h2>
 
             <div className="max-w-4xl space-y-8 text-lg leading-8 text-neutral-700">
@@ -236,19 +246,6 @@ export default function SNESProjectPage() {
                 <li>Component-Based Architecture</li>
                 <li>State Management with React Hooks</li>
               </ul>
-            </div>
-          </section>
-
-          <section id="gallery" className="mt-16 scroll-mt-28 pb-20">
-            <h2 className="mb-6 text-3xl font-semibold">Project Gallery</h2>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
-              <div className="aspect-video rounded-lg bg-neutral-300" />
             </div>
           </section>
 
