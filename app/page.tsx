@@ -30,6 +30,7 @@ const projects = [
     title: "Pokemon Tracker App",
     href: "projects/Project1025",
     image: "/project1025.png",
+    imagePosition: "object-left",
     skills: ["React", "Next.js", "TypeScript", "Tailwind"],
     size: "md:col-span-2 md:row-span-3",
   },
@@ -79,7 +80,7 @@ export default function Home() {
             </h1>
 
             <p className="mx-auto max-w-2xl text-xl leading-relaxed text-neutral-700 sm:text-2xl lg:mx-0">
-              A museum of my projects.
+              A museum of my projects
             </p>
 
             <div className="mt-8 flex items-center justify-center gap-5 lg:justify-start">
@@ -165,7 +166,7 @@ export default function Home() {
                   <img
                     src={project.image}
                     alt={`${project.title} preview`}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className={`h-full w-full object-cover transition duration-500 group-hover:scale-105 ${project.imagePosition ?? "object-center"}`}
                   />
                 </div>
 
@@ -209,7 +210,6 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="text-2xl font-semibold">Suryansh Singh</h2>
-            <p className="mt-2 text-white/80">Always happy to connect</p>
           </div>
 
           <div className="flex items-center gap-5">

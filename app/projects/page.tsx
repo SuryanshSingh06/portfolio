@@ -24,6 +24,7 @@ const projects = [
     title: "Pokémon Tracker App",
     href: "/projects/Project1025",
     image: "/project1025.png",
+    imagePosition: "object-left",
     skills: ["React", "Next.js", "TypeScript"],
   },
   {
@@ -64,7 +65,7 @@ export default function ProjectsPage() {
                 <img
                   src={project.image}
                   alt={`${project.title} preview`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  className={`h-full w-full object-cover transition duration-500 group-hover:scale-105 ${project.imagePosition ?? "object-center"}`}
                 />
               </div>
 

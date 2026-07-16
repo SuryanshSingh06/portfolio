@@ -27,13 +27,6 @@ export default function ContactPage() {
             suryanshsingh3002@gmail.com
           </a>
 
-          <a
-            href="tel:+12179262118"
-            className="flex items-center justify-center gap-3 transition hover:text-[var(--accent)]"
-          >
-            <FaPhone />
-            217-926-2118
-          </a>
         </div>
 
         <Link
