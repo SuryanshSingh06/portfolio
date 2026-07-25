@@ -84,13 +84,6 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex items-center justify-center gap-5 lg:justify-start">
-              <Link
-                href="/resume"
-                className="rounded-md bg-[var(--accent)] px-6 py-3 font-medium text-white transition hover:bg-[var(--accent-hover)]"
-              >
-                Resume
-              </Link>
-
               <a
                 href="https://github.com/SuryanshSingh06"
                 target="_blank"
@@ -213,13 +206,6 @@ export default function Home() {
           </div>
 
           <div className="flex items-center gap-5">
-            <Link
-              href="/resume"
-              className="rounded-md border border-white px-5 py-2 font-medium text-white transition hover:bg-white hover:text-[var(--accent)]"
-            >
-              Resume
-            </Link>
-
             <a
               href="https://github.com/SuryanshSingh06"
               target="_blank"

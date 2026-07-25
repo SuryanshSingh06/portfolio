@@ -43,7 +43,6 @@ export default function Navbar() {
         <div className="flex items-center gap-8 text-lg">
           {[
             { label: "Projects", href: "/projects" },
-            { label: "Resume", href: "/resume" },
             { label: "Contact", href: "/contact" },
           ].map((item) => (
             <Link
